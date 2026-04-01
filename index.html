@@ -1,0 +1,1749 @@
+<!doctype html>
+<html lang="en-KE">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JijiTek Kenya — Resale Electronics Marketplace</title>
+    <meta
+      name="description"
+      content="Buy and sell pre-owned electronics across Kenya. Phones, laptops, TVs, gaming, accessories — verified listings, M-PESA friendly, delivery options."
+    />
+    <style>
+      :root{
+        --bg:#070a10;
+        --panel:rgba(255,255,255,.08);
+        --panel2:rgba(255,255,255,.06);
+        --text:#f2f6ff;
+        --muted:rgba(242,246,255,.72);
+        --line:rgba(255,255,255,.12);
+        --shadow:0 22px 70px rgba(0,0,0,.45);
+
+        --accent:#16a34a;     /* Kenya green vibe */
+        --accent2:#22c55e;
+        --accent3:#0ea5e9;    /* cool tech blue */
+        --warn:#f59e0b;
+
+        --ring:rgba(34,197,94,.35);
+      }
+
+      *{box-sizing:border-box}
+      html,body{height:100%}
+      body{
+        margin:0;
+        color:var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background:
+          radial-gradient(1000px 520px at 18% 10%, rgba(34,197,94,.24), transparent 55%),
+          radial-gradient(900px 540px at 82% 22%, rgba(14,165,233,.18), transparent 55%),
+          radial-gradient(900px 520px at 50% 95%, rgba(245,158,11,.10), transparent 60%),
+          var(--bg);
+      }
+
+      a{color:inherit}
+      .wrap{max-width:1120px; margin:0 auto; padding:22px 16px 56px}
+
+      /* Header */
+      header{
+        display:flex; align-items:center; justify-content:space-between; gap:14px;
+        padding:14px 14px;
+        border:1px solid var(--line);
+        background:rgba(0,0,0,.22);
+        backdrop-filter: blur(10px);
+        border-radius:18px;
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 12px;
+        z-index: 5;
+      }
+
+      .brand{
+        display:flex; align-items:center; gap:10px;
+        min-width: 210px;
+      }
+      .logo{
+        width:38px; height:38px; border-radius:14px;
+        background:
+          linear-gradient(135deg, rgba(34,197,94,1), rgba(14,165,233,1));
+        box-shadow: 0 0 0 6px rgba(34,197,94,.12);
+      }
+      .brand h1{font-size:15px; margin:0; letter-spacing:.2px}
+      .brand p{margin:1px 0 0; font-size:12px; color:var(--muted)}
+
+      .nav{
+        display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:flex-end;
+      }
+      .nav a{
+        text-decoration:none;
+        color:var(--muted);
+        padding:8px 10px;
+        border-radius:12px;
+        border: 1px solid transparent;
+      }
+      .nav a:hover{color:var(--text); background:rgba(255,255,255,.06); border-color: rgba(255,255,255,.08)}
+
+      /* Search bar */
+      .search{
+        flex:1;
+        display:flex;
+        gap:10px;
+        align-items:center;
+        min-width: 280px;
+        max-width: 520px;
+      }
+      .search input, .search select{
+        width:100%;
+        padding:10px 12px;
+        border-radius:14px;
+        border:1px solid rgba(255,255,255,.14);
+        background:rgba(0,0,0,.18);
+        color:var(--text);
+        outline:none;
+      }
+      .search input:focus, .search select:focus{
+        border-color: rgba(34,197,94,.6);
+        box-shadow: 0 0 0 3px rgba(34,197,94,.16);
+      }
+
+      /* Buttons */
+      .btn{
+        appearance:none; border:0; cursor:pointer;
+        padding:10px 12px;
+        border-radius:14px;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--accent), var(--accent3));
+        color:#05110a;
+        box-shadow: 0 12px 35px rgba(34,197,94,.18);
+        white-space:nowrap;
+      }
+      .btn:focus{outline:3px solid var(--ring); outline-offset:2px}
+      .btn.secondary{
+        background: rgba(255,255,255,.06);
+        color: var(--text);
+        border:1px solid rgba(255,255,255,.14);
+        box-shadow:none;
+      }
+      .btn.small{padding:8px 10px; border-radius:12px; font-weight:650}
+
+      /* Layout */
+      main{padding-top:18px}
+      .hero{
+        display:grid;
+        grid-template-columns: 1.2fr .8fr;
+        gap:14px;
+      }
+      @media (max-width: 920px){ .hero{grid-template-columns: 1fr} header{position:static} .brand{min-width:auto} }
+      .card{
+        border:1px solid var(--line);
+        background: var(--panel);
+        backdrop-filter: blur(10px);
+        border-radius: 22px;
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .kicker{
+        display:inline-flex; align-items:center; gap:8px;
+        padding:6px 10px;
+        border-radius:999px;
+        border:1px solid rgba(255,255,255,.14);
+        background: rgba(0,0,0,.20);
+        color: rgba(242,246,255,.86);
+        font-size: 12px;
+      }
+      .pill{
+        width:8px; height:8px; border-radius:999px;
+        background: var(--accent2);
+        box-shadow: 0 0 0 5px rgba(34,197,94,.12);
+      }
+
+      h2{margin:10px 0 8px; font-size: clamp(22px, 3.4vw, 40px); line-height:1.08}
+      p{margin:0 0 12px; color:var(--muted); line-height:1.6}
+
+      .trust{
+        display:flex; gap:10px; flex-wrap:wrap;
+        margin-top:12px;
+      }
+      .badge{
+        padding:8px 10px;
+        border-radius:14px;
+        border:1px solid rgba(255,255,255,.12);
+        background: rgba(0,0,0,.18);
+        color: rgba(242,246,255,.86);
+        font-size: 12px;
+      }
+
+      /* Product grid */
+      .sectionHead{
+        display:flex; align-items:end; justify-content:space-between; gap:10px;
+        margin-top: 18px;
+      }
+      .sectionHead h3{margin:0; font-size:16px}
+      .sectionHead .muted{color:var(--muted); font-size:12px}
+
+      .grid{
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 10px;
+      }
+      @media (max-width: 980px){ .grid{grid-template-columns: repeat(2, 1fr)} }
+      @media (max-width: 560px){ .grid{grid-template-columns: 1fr} }
+
+      .item{
+        padding: 12px;
+        border-radius: 18px;
+        border:1px solid rgba(255,255,255,.12);
+        background: var(--panel2);
+      }
+      .thumb{
+        height: 140px;
+        border-radius: 16px;
+        border:1px solid rgba(255,255,255,.12);
+        background:
+          radial-gradient(240px 140px at 20% 20%, rgba(34,197,94,.22), transparent 55%),
+          radial-gradient(260px 160px at 80% 30%, rgba(14,165,233,.18), transparent 55%),
+          linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+        display:flex; align-items:center; justify-content:center;
+        color: rgba(242,246,255,.82);
+        font-weight: 800;
+        letter-spacing: .3px;
+      }
+      .meta{display:flex; justify-content:space-between; gap:10px; margin-top:10px; align-items:baseline}
+      .title{font-weight:800; font-size:14px; margin:0}
+      .price{font-weight:900; font-size:14px}
+      .sub{margin:6px 0 10px; font-size:12px; color:var(--muted)}
+      .tags{display:flex; gap:6px; flex-wrap:wrap}
+      .tag{font-size:11px; padding:6px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background: rgba(0,0,0,.18)}
+      .tag.good{border-color: rgba(34,197,94,.28); background: rgba(34,197,94,.10)}
+      .tag.warn{border-color: rgba(245,158,11,.30); background: rgba(245,158,11,.10)}
+
+      .row{
+        display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+        margin-top: 10px;
+      }
+
+      /* Side panel */
+      .side h3{margin:0 0 10px; font-size:16px}
+      .panel{
+        border: 1px solid rgba(255,255,255,.12);
+        background: rgba(0,0,0,.18);
+        border-radius: 18px;
+        padding: 12px;
+      }
+      label{display:block; font-size:12px; color:var(--muted); margin: 10px 0 6px}
+      select, input[type="number"]{
+        width:100%;
+        padding:10px 12px;
+        border-radius:14px;
+        border:1px solid rgba(255,255,255,.14);
+        background:rgba(0,0,0,.18);
+        color:var(--text);
+        outline:none;
+      }
+
+      /* Toast */
+      .toast{
+        margin-top:12px;
+        display:none;
+        padding:10px 12px;
+        border-radius:14px;
+        border:1px solid rgba(34,197,94,.35);
+        background: rgba(34,197,94,.12);
+        color: rgba(242,246,255,.92);
+      }
+      .toast.show{display:block}
+
+      footer{
+        margin-top: 18px;
+        color: rgba(242,246,255,.55);
+        font-size: 12px;
+        text-align: center;
+      }
+      .fineprint{margin-top: 6px; color: rgba(242,246,255,.45)}
+
+      /* Auth */
+      .userChip{
+        display:inline-flex; align-items:center; gap:8px;
+        padding:8px 10px;
+        border-radius:999px;
+        border:1px solid rgba(255,255,255,.12);
+        background: rgba(0,0,0,.18);
+        color: rgba(242,246,255,.86);
+        font-size: 12px;
+        white-space:nowrap;
+      }
+      .authGrid{
+        display:grid;
+        grid-template-columns: 1.05fr .95fr;
+        gap: 14px;
+        align-items:start;
+      }
+      @media (max-width: 920px){ .authGrid{grid-template-columns: 1fr} }
+
+      .tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 10px}
+      .tab{
+        appearance:none; cursor:pointer;
+        padding:8px 10px;
+        border-radius: 999px;
+        border:1px solid rgba(255,255,255,.14);
+        background: rgba(0,0,0,.18);
+        color: rgba(242,246,255,.86);
+        font-weight: 750;
+      }
+      .tab[aria-selected="true"]{
+        border-color: rgba(34,197,94,.35);
+        background: rgba(34,197,94,.10);
+        color: var(--text);
+      }
+      .authForm{margin-top: 6px}
+      .authForm input{
+        width:100%;
+        padding:10px 12px;
+        border-radius:14px;
+        border:1px solid rgba(255,255,255,.14);
+        background:rgba(0,0,0,.18);
+        color:var(--text);
+        outline:none;
+      }
+      .authForm input:focus{
+        border-color: rgba(34,197,94,.6);
+        box-shadow: 0 0 0 3px rgba(34,197,94,.16);
+      }
+      .hint{margin: 8px 0 0; font-size:12px; color: rgba(242,246,255,.62); line-height:1.55}
+      .error{
+        margin-top:10px;
+        padding:10px 12px;
+        border-radius:14px;
+        border:1px solid rgba(245,158,11,.30);
+        background: rgba(245,158,11,.10);
+        color: rgba(242,246,255,.90);
+        display:none;
+      }
+      .error.show{display:block}
+
+      .hidden{display:none !important}
+
+      /* Sell/upload */
+      .imgGrid{display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; margin-top:10px}
+      @media (max-width: 980px){ .imgGrid{grid-template-columns: repeat(3, 1fr)} }
+      @media (max-width: 560px){ .imgGrid{grid-template-columns: repeat(2, 1fr)} }
+      .imgTile{
+        height: 110px;
+        border-radius: 16px;
+        border:1px solid rgba(255,255,255,.12);
+        background: rgba(0,0,0,.18);
+        overflow:hidden;
+        display:flex; align-items:center; justify-content:center;
+        color: rgba(242,246,255,.72);
+        font-weight: 750;
+        letter-spacing:.2px;
+      }
+      .imgTile img{width:100%; height:100%; object-fit:cover; display:block}
+
+      /* Chat */
+      .chatLayout{display:grid; grid-template-columns: .85fr 1.15fr; gap:14px; align-items:start}
+      @media (max-width: 920px){ .chatLayout{grid-template-columns: 1fr} }
+      .list{
+        display:flex; flex-direction:column; gap:8px;
+      }
+      .listItem{
+        cursor:pointer;
+        padding:10px 12px;
+        border-radius: 16px;
+        border:1px solid rgba(255,255,255,.12);
+        background: rgba(0,0,0,.18);
+      }
+      .listItem:hover{border-color: rgba(34,197,94,.26)}
+      .listItem.active{border-color: rgba(34,197,94,.40); background: rgba(34,197,94,.08)}
+      .listTop{display:flex; justify-content:space-between; gap:10px; align-items:baseline}
+      .listTitle{margin:0; font-weight:900; font-size:13px}
+      .listMeta{margin:4px 0 0; color: rgba(242,246,255,.66); font-size:12px}
+      .bubbleWrap{
+        border:1px solid rgba(255,255,255,.12);
+        background: rgba(0,0,0,.14);
+        border-radius: 18px;
+        padding: 12px;
+      }
+      .bubbles{display:flex; flex-direction:column; gap:8px; max-height: 360px; overflow:auto; padding-right: 6px}
+      .bubble{
+        max-width: 78%;
+        padding:10px 12px;
+        border-radius: 16px;
+        border:1px solid rgba(255,255,255,.12);
+        background: rgba(255,255,255,.06);
+        color: rgba(242,246,255,.92);
+        font-size:13px;
+        line-height:1.5;
+      }
+      .bubble.me{
+        align-self:flex-end;
+        border-color: rgba(34,197,94,.26);
+        background: rgba(34,197,94,.10);
+      }
+      .bubble .ts{display:block; margin-top:6px; font-size:11px; color: rgba(242,246,255,.58)}
+      .chatComposer{display:flex; gap:10px; margin-top:10px}
+      .chatComposer input{
+        flex:1;
+        padding:10px 12px;
+        border-radius:14px;
+        border:1px solid rgba(255,255,255,.14);
+        background:rgba(0,0,0,.18);
+        color:var(--text);
+        outline:none;
+      }
+      .chatComposer input:focus{
+        border-color: rgba(34,197,94,.6);
+        box-shadow: 0 0 0 3px rgba(34,197,94,.16);
+      }
+
+      /* Floating action buttons */
+      .fabBar{
+        position: fixed;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        z-index: 50;
+      }
+      .fab{
+        width: 54px;
+        height: 54px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.14);
+        background: rgba(0,0,0,.22);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow);
+        color: var(--text);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        cursor:pointer;
+      }
+      .fab:hover{border-color: rgba(34,197,94,.30)}
+      .fab:focus{outline:3px solid var(--ring); outline-offset:2px}
+      .fab svg{width:22px; height:22px; display:block}
+      .fabLabel{
+        position:absolute;
+        right: 62px;
+        padding:8px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.12);
+        background: rgba(0,0,0,.32);
+        color: rgba(242,246,255,.88);
+        font-size: 12px;
+        white-space:nowrap;
+        opacity:0;
+        transform: translateX(6px);
+        pointer-events:none;
+        transition: opacity .14s ease, transform .14s ease;
+      }
+      .fabWrap{position:relative}
+      .fabWrap:hover .fabLabel{opacity:1; transform: translateX(0)}
+
+      /* AI assistant */
+      .aiBtn{
+        position: fixed;
+        left: 16px;
+        bottom: 16px;
+        z-index: 60;
+        width: 56px;
+        height: 56px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.14);
+        background: linear-gradient(135deg, rgba(34,197,94,.22), rgba(14,165,233,.18));
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow);
+        color: var(--text);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        cursor:pointer;
+      }
+      .aiBtn:hover{border-color: rgba(34,197,94,.30)}
+      .aiBtn:focus{outline:3px solid var(--ring); outline-offset:2px}
+      .aiBtn svg{width:22px; height:22px; display:block}
+
+      .aiPanel{
+        position: fixed;
+        left: 16px;
+        bottom: 82px;
+        width: min(420px, calc(100vw - 32px));
+        z-index: 60;
+        border:1px solid rgba(255,255,255,.14);
+        background: rgba(0,0,0,.34);
+        backdrop-filter: blur(12px);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        overflow:hidden;
+        display:none;
+      }
+      .aiPanel.show{display:block}
+      .aiHead{
+        display:flex; align-items:center; justify-content:space-between; gap:10px;
+        padding: 12px 12px;
+        border-bottom:1px solid rgba(255,255,255,.12);
+        background: rgba(0,0,0,.22);
+      }
+      .aiHead strong{font-size:13px}
+      .aiBody{padding: 12px}
+      .aiMsgs{display:flex; flex-direction:column; gap:8px; max-height: 320px; overflow:auto; padding-right: 6px}
+      .aiMsg{
+        max-width: 92%;
+        padding:10px 12px;
+        border-radius: 16px;
+        border:1px solid rgba(255,255,255,.12);
+        background: rgba(255,255,255,.06);
+        color: rgba(242,246,255,.92);
+        font-size:13px;
+        line-height:1.5;
+      }
+      .aiMsg.me{align-self:flex-end; background: rgba(34,197,94,.10); border-color: rgba(34,197,94,.26)}
+      .aiQuick{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+      .aiComposer{display:flex; gap:10px; margin-top:10px}
+      .aiComposer input{
+        flex:1;
+        padding:10px 12px;
+        border-radius:14px;
+        border:1px solid rgba(255,255,255,.14);
+        background:rgba(0,0,0,.18);
+        color:var(--text);
+        outline:none;
+      }
+      .aiComposer input:focus{
+        border-color: rgba(34,197,94,.6);
+        box-shadow: 0 0 0 3px rgba(34,197,94,.16);
+      }
+      .aiSmall{font-size:12px; color: rgba(242,246,255,.62); margin-top:8px; line-height:1.55}
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand" aria-label="Site brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>Bwire Resale Shop</h1>
+            <p>Resale electronics marketplace — nationwide</p>
+          </div>
+        </div>
+
+        <div class="search" role="search" aria-label="Search listings">
+          <input id="q" placeholder="Search: iPhone 13, HP EliteBook, PS5, Samsung TV…" />
+          <select id="quickCity" aria-label="Quick location">
+            <option value="">All Kenya</option>
+            <option>Nairobi</option>
+            <option>Mombasa</option>
+            <option>Kisumu</option>
+            <option>Nakuru</option>
+            <option>Eldoret</option>
+            <option>Thika</option>
+          </select>
+        </div>
+
+        <div class="nav" aria-label="Primary">
+          <a href="#browse">Browse</a>
+          <a href="#how">How it works</a>
+          <a href="#support">Support</a>
+          <a href="#login" id="loginLink">Login</a>
+          <a href="#chat" id="chatLink" style="display:none;">Chats</a>
+          <a href="#sell" id="sellLink" style="display:none;">Sell</a>
+          <span class="userChip" id="userChip" hidden aria-label="Signed in user"></span>
+          <button class="btn small secondary" id="logoutBtn" type="button" style="display:none;">Logout</button>
+          <button class="btn small secondary" id="mpesaBtn" type="button">M-PESA tips</button>
+          <button class="btn small" id="sellBtn" type="button">Post an ad</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" id="homeTop">
+          <div class="card">
+            <div class="kicker"><span class="pill" aria-hidden="true"></span>Buy & sell used electronics across Kenya</div>
+            <h2>Trusted resale for phones, laptops, TVs, gaming & accessories</h2>
+            <p>
+              Find great deals near you or across the country. Filter by condition, warranty, and location.
+              Meet safely or use delivery options where available.
+            </p>
+
+            <div class="row">
+              <button class="btn" id="browseBtn" type="button">Browse listings</button>
+              <button class="btn secondary" id="verifyBtn" type="button">Safety & verification</button>
+            </div>
+
+            <div class="trust" aria-label="Trust badges">
+              <div class="badge">M-PESA friendly</div>
+              <div class="badge">Nationwide coverage</div>
+              <div class="badge">Condition labels</div>
+              <div class="badge">Report & block sellers</div>
+            </div>
+
+            <div id="toast" class="toast" role="status" aria-live="polite"></div>
+          </div>
+
+          <aside class="card side" aria-label="Filters">
+            <h3>Quick filters</h3>
+            <div class="panel">
+              <label for="category">Category</label>
+              <select id="category">
+                <option value="">All electronics</option>
+                <option value="phones">Phones</option>
+                <option value="laptops">Laptops</option>
+                <option value="tvs">TVs</option>
+                <option value="gaming">Gaming</option>
+                <option value="audio">Audio</option>
+                <option value="accessories">Accessories</option>
+              </select>
+
+              <label for="condition">Condition</label>
+              <select id="condition">
+                <option value="">Any</option>
+                <option value="new">New</option>
+                <option value="like_new">Like new</option>
+                <option value="good">Good</option>
+                <option value="fair">Fair</option>
+              </select>
+
+              <label for="maxPrice">Max price (KES)</label>
+              <input id="maxPrice" type="number" min="0" step="500" placeholder="e.g. 45000" />
+
+              <label for="city">Location</label>
+              <select id="city">
+                <option value="">All Kenya</option>
+                <option>Nairobi</option>
+                <option>Mombasa</option>
+                <option>Kisumu</option>
+                <option>Nakuru</option>
+                <option>Eldoret</option>
+                <option>Thika</option>
+              </select>
+
+              <div class="row" style="margin-top:12px;">
+                <button class="btn secondary" id="resetBtn" type="button">Reset</button>
+                <button class="btn" id="applyBtn" type="button">Apply</button>
+              </div>
+            </div>
+
+            <div class="panel" style="margin-top:12px;">
+              <h3 style="margin:0 0 8px;">How it works</h3>
+              <p style="margin:0; color:var(--muted); font-size:12px; line-height:1.55" id="how">
+                Browse listings, chat with sellers, confirm condition, then pay safely (prefer face-to-face or trusted delivery).
+              </p>
+            </div>
+          </aside>
+        </section>
+
+        <section id="login" class="card" style="margin-top:14px;" aria-label="Login and create account">
+          <div class="authGrid">
+            <div>
+              <h3 style="margin:0 0 8px;">Welcome back (or join JijiTek)</h3>
+              <p style="margin:0 0 10px;">
+                Create an account to post ads and chat with buyers/sellers. This is a client-side demo (no real backend yet).
+              </p>
+              <div class="panel">
+                <div class="badge" style="display:inline-flex;">Tip</div>
+                <p class="hint" style="margin-top:8px;">
+                  For a real app: passwords must be handled server-side, with hashing + secure sessions/JWT. This demo stores data in your browser only.
+                </p>
+              </div>
+            </div>
+
+            <div class="panel" aria-label="Auth form">
+              <div class="tabs" role="tablist" aria-label="Auth mode">
+                <button class="tab" id="tabLogin" type="button" role="tab" aria-selected="true">Login</button>
+                <button class="tab" id="tabRegister" type="button" role="tab" aria-selected="false">Create account</button>
+              </div>
+
+              <form id="loginForm" class="authForm" autocomplete="on">
+                <label for="loginEmail">Email</label>
+                <input id="loginEmail" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required />
+
+                <label for="loginPassword">Password</label>
+                <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Your password" required />
+
+                <div class="row">
+                  <button class="btn" type="submit">Login</button>
+                  <button class="btn secondary" id="loginToRegister" type="button">New here? Create account</button>
+                </div>
+                <div id="loginError" class="error" role="status" aria-live="polite"></div>
+              </form>
+
+              <form id="registerForm" class="authForm" style="display:none;" autocomplete="on">
+                <label for="regName">Full name</label>
+                <input id="regName" type="text" autocomplete="name" placeholder="e.g. Amina Mwangi" required />
+
+                <label for="regEmail">Email</label>
+                <input id="regEmail" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required />
+
+                <label for="regPhone">Phone (optional)</label>
+                <input id="regPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 07xx xxx xxx" />
+
+                <label for="regPassword">Password</label>
+                <input id="regPassword" type="password" autocomplete="new-password" placeholder="Create a password" required />
+
+                <div class="row">
+                  <button class="btn" type="submit">Create account</button>
+                  <button class="btn secondary" id="registerToLogin" type="button">Already have an account?</button>
+                </div>
+                <div id="registerError" class="error" role="status" aria-live="polite"></div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section id="browse" class="card" style="margin-top:14px;">
+          <div class="sectionHead">
+            <div>
+              <h3>Featured electronics</h3>
+              <div class="muted" id="resultHint">Showing demo listings (client-side filtering)</div>
+            </div>
+            <button class="btn small secondary" id="sortBtn" type="button">Sort: Best match</button>
+          </div>
+
+          <div class="grid" id="grid" aria-label="Product listings grid"></div>
+        </section>
+
+        <section id="support" class="card" style="margin-top:14px;">
+          <h3 style="margin:0 0 8px;">Support & safety</h3>
+          <p style="margin:0 0 10px;">
+            Avoid advance payments to unknown sellers. Meet in public places, test devices (IMEI, battery health, ports),
+            and keep proof of purchase where possible.
+          </p>
+          <div class="row">
+            <button class="btn secondary" id="scamBtn" type="button">Common scam checks</button>
+            <button class="btn secondary" id="deliveryBtn" type="button">Delivery guidance</button>
+            <button class="btn secondary" id="reportBtn" type="button">Report a listing</button>
+          </div>
+        </section>
+
+        <section id="sell" class="card hidden" style="margin-top:14px;" aria-label="Sell and upload product">
+          <div class="authGrid">
+            <div>
+              <h3 style="margin:0 0 8px;">Post an ad</h3>
+              <p style="margin:0 0 10px;">
+                Upload product images, add details, then publish your listing (demo: saved in your browser).
+              </p>
+              <div class="panel">
+                <div class="badge" style="display:inline-flex;">Seller checklist</div>
+                <p class="hint" style="margin-top:8px;">
+                  Use clear photos, include faults, and be honest about condition. Meet in safe public places and avoid risky advance payments.
+                </p>
+              </div>
+            </div>
+
+            <div class="panel">
+              <form id="sellForm" class="authForm" autocomplete="off">
+                <label for="sellTitle">Product title</label>
+                <input id="sellTitle" type="text" placeholder="e.g. iPhone 12 Pro 256GB (Unlocked)" required />
+
+                <label for="sellCategory">Category</label>
+                <select id="sellCategory" required>
+                  <option value="">Choose...</option>
+                  <option value="phones">Phones</option>
+                  <option value="laptops">Laptops</option>
+                  <option value="tvs">TVs</option>
+                  <option value="gaming">Gaming</option>
+                  <option value="audio">Audio</option>
+                  <option value="accessories">Accessories</option>
+                </select>
+
+                <label for="sellCondition">Condition</label>
+                <select id="sellCondition" required>
+                  <option value="">Choose...</option>
+                  <option value="new">New</option>
+                  <option value="like_new">Like new</option>
+                  <option value="good">Good</option>
+                  <option value="fair">Fair</option>
+                </select>
+
+                <label for="sellCity">Location</label>
+                <select id="sellCity" required>
+                  <option value="">Choose...</option>
+                  <option>Nairobi</option>
+                  <option>Mombasa</option>
+                  <option>Kisumu</option>
+                  <option>Nakuru</option>
+                  <option>Eldoret</option>
+                  <option>Thika</option>
+                </select>
+
+                <label for="sellPrice">Price (KES)</label>
+                <input id="sellPrice" type="number" min="0" step="500" placeholder="e.g. 45000" required />
+
+                <label for="sellImages">Upload images</label>
+                <input id="sellImages" type="file" accept="image/*" multiple />
+                <div class="hint">Up to 6 images recommended. (Demo stores images in your browser.)</div>
+                <div id="sellPreview" class="imgGrid" aria-label="Uploaded image previews"></div>
+
+                <div class="row" style="margin-top:12px;">
+                  <button class="btn" type="submit">Publish listing</button>
+                  <button class="btn secondary" id="sellClearBtn" type="button">Clear</button>
+                </div>
+                <div id="sellError" class="error" role="status" aria-live="polite"></div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section id="chat" class="card hidden" style="margin-top:14px;" aria-label="Chat between buyers and sellers">
+          <div class="sectionHead" style="margin-top:0;">
+            <div>
+              <h3>Chats</h3>
+              <div class="muted" id="chatHint">Select a conversation to start chatting.</div>
+            </div>
+            <button class="btn small secondary" id="newChatHelpBtn" type="button">How to start a chat</button>
+          </div>
+
+          <div class="chatLayout" style="margin-top:10px;">
+            <div class="panel">
+              <h3 style="margin:0 0 10px; font-size:16px;">Inbox</h3>
+              <div id="chatList" class="list" aria-label="Chat list"></div>
+            </div>
+
+            <div class="panel">
+              <div class="listTop" style="margin-bottom:10px;">
+                <p class="listTitle" id="chatTitle" style="margin:0;">No chat selected</p>
+                <span class="tag" id="chatRoleTag" style="display:none;"></span>
+              </div>
+
+              <div class="bubbleWrap">
+                <div id="chatBubbles" class="bubbles" aria-label="Chat messages"></div>
+              </div>
+
+              <div class="chatComposer">
+                <input id="chatInput" placeholder="Type a message…" disabled />
+                <button class="btn" id="chatSendBtn" type="button" disabled>Send</button>
+              </div>
+              <div id="chatError" class="error" role="status" aria-live="polite"></div>
+            </div>
+          </div>
+        </section>
+
+        <footer>
+          © <span id="year"></span> JijiTek Kenya — Demo landing + listings UI
+          <div class="fineprint">Replace demo data with your backend/API when ready.</div>
+        </footer>
+      </main>
+    </div>
+
+    <div class="fabBar" id="fabBar" hidden aria-label="Quick actions">
+      <div class="fabWrap">
+        <div class="fabLabel">Chats</div>
+        <button class="fab" id="fabChatBtn" type="button" aria-label="Open chats">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 3v-3H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm3 5h10a1 1 0 1 0 0-2H7a1 1 0 1 0 0 2Zm0 4h7a1 1 0 1 0 0-2H7a1 1 0 1 0 0 2Z"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="fabWrap">
+        <div class="fabLabel">Upload</div>
+        <button class="fab" id="fabSellBtn" type="button" aria-label="Upload and post an ad">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M12 2a5 5 0 0 1 5 5v2h1a3 3 0 0 1 3 3v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-6a3 3 0 0 1 3-3h1V7a5 5 0 0 1 5-5Zm3 7V7a3 3 0 0 0-6 0v2h6Zm-3 4a1 1 0 0 1 1 1v1h1a1 1 0 1 1 0 2h-1v1a1 1 0 1 1-2 0v-1h-1a1 1 0 1 1 0-2h1v-1a1 1 0 0 1 1-1Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <button class="aiBtn" id="aiBtn" type="button" aria-label="Open AI assistant">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M12 2a8 8 0 0 1 8 8v3a5 5 0 0 1-5 5h-1l-4 3v-3H9a5 5 0 0 1-5-5v-3a8 8 0 0 1 8-8Zm-4 9a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2H8Zm7 0a1 1 0 1 0 0 2h1a1 1 0 1 0 0-2h-1Zm-6.2 4.3a1 1 0 0 0 1.4 1.4A2.54 2.54 0 0 1 12 16a2.54 2.54 0 0 1 1.8.7 1 1 0 0 0 1.4-1.4A4.54 4.54 0 0 0 12 14a4.54 4.54 0 0 0-3.2 1.3Z"/>
+      </svg>
+    </button>
+
+    <div class="aiPanel" id="aiPanel" role="dialog" aria-label="AI assistant" aria-modal="false">
+      <div class="aiHead">
+        <strong>JijiTek Assistant</strong>
+        <div class="row" style="margin:0;">
+          <button class="btn small secondary" id="aiClearBtn" type="button">Clear</button>
+          <button class="btn small secondary" id="aiCloseBtn" type="button">Close</button>
+        </div>
+      </div>
+      <div class="aiBody">
+        <div id="aiMsgs" class="aiMsgs" aria-label="Assistant messages"></div>
+        <div class="aiQuick" aria-label="Quick help">
+          <button class="btn small secondary" id="aiQLogin" type="button">How do I login?</button>
+          <button class="btn small secondary" id="aiQSell" type="button">How do I post an ad?</button>
+          <button class="btn small secondary" id="aiQChat" type="button">How do I start a chat?</button>
+          <button class="btn small secondary" id="aiQFilter" type="button">How to filter listings?</button>
+        </div>
+        <div class="aiComposer">
+          <input id="aiInput" placeholder="Ask: “How do I upload images?”" />
+          <button class="btn" id="aiSendBtn" type="button">Ask</button>
+        </div>
+        <div class="aiSmall">Demo helper: answers are rule-based (no real AI model connected).</div>
+      </div>
+    </div>
+
+    <script>
+      // Demo seed data (replace with real listings from your backend)
+      const seedListings = [
+        { id: 1, title: "iPhone 13 128GB", category: "phones", city: "Nairobi", price: 62000, condition: "good", warranty: false, verified: true, sellerName: "Kevin N.", sellerEmail: "kevin@demo.test", images: [] },
+        { id: 2, title: "HP EliteBook 840 G7", category: "laptops", city: "Mombasa", price: 54000, condition: "like_new", warranty: true, verified: true, sellerName: "Amina M.", sellerEmail: "amina@demo.test", images: [] },
+        { id: 3, title: "Samsung 55\" 4K Smart TV", category: "tvs", city: "Kisumu", price: 68000, condition: "good", warranty: false, verified: false, sellerName: "Otieno O.", sellerEmail: "otieno@demo.test", images: [] },
+        { id: 4, title: "PlayStation 5 (Disc Edition)", category: "gaming", city: "Nakuru", price: 72000, condition: "like_new", warranty: false, verified: true, sellerName: "Faith K.", sellerEmail: "faith@demo.test", images: [] },
+        { id: 5, title: "JBL Bluetooth Speaker", category: "audio", city: "Eldoret", price: 8500, condition: "good", warranty: false, verified: false, sellerName: "Brian S.", sellerEmail: "brian@demo.test", images: [] },
+        { id: 6, title: "USB-C Fast Charger + Cable", category: "accessories", city: "Thika", price: 1200, condition: "new", warranty: false, verified: false, sellerName: "Mercy W.", sellerEmail: "mercy@demo.test", images: [] },
+        { id: 7, title: "Dell Latitude 5420 i5/16GB", category: "laptops", city: "Nairobi", price: 61000, condition: "good", warranty: true, verified: false, sellerName: "Sam K.", sellerEmail: "sam@demo.test", images: [] },
+        { id: 8, title: "Tecno Spark 10", category: "phones", city: "Kisumu", price: 12500, condition: "good", warranty: false, verified: true, sellerName: "Linet A.", sellerEmail: "linet@demo.test", images: [] },
+        { id: 9, title: "Sony WH-1000XM4 Headphones", category: "audio", city: "Nairobi", price: 24000, condition: "like_new", warranty: false, verified: true, sellerName: "Njoroge P.", sellerEmail: "njoroge@demo.test", images: [] },
+      ];
+
+      const LISTINGS_KEY = "jijitek_listings_v1";
+      function readListings() {
+        try {
+          const raw = localStorage.getItem(LISTINGS_KEY);
+          const parsed = raw ? JSON.parse(raw) : [];
+          return Array.isArray(parsed) ? parsed : [];
+        } catch {
+          return [];
+        }
+      }
+      function writeListings(items) {
+        localStorage.setItem(LISTINGS_KEY, JSON.stringify(items));
+      }
+      function mergeListings(seed, saved) {
+        const byId = new Map();
+        for (const s of seed) byId.set(Number(s.id), s);
+        for (const x of saved) byId.set(Number(x.id), x);
+        return Array.from(byId.values()).sort((a,b) => Number(a.id) - Number(b.id));
+      }
+
+      let listings = mergeListings(seedListings, readListings());
+
+      const el = (id) => document.getElementById(id);
+      const grid = el("grid");
+      const toast = el("toast");
+
+      const fmtKES = (n) => new Intl.NumberFormat("en-KE", { style: "currency", currency: "KES", maximumFractionDigits: 0 }).format(n);
+      const fmtTime = (ts) => new Intl.DateTimeFormat("en-KE", { dateStyle: "medium", timeStyle: "short" }).format(new Date(ts));
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(() => toast.classList.remove("show"), 2800);
+      }
+
+      function conditionLabel(c) {
+        return c === "like_new" ? "Like new" : c.charAt(0).toUpperCase() + c.slice(1);
+      }
+
+      function render(items) {
+        grid.innerHTML = "";
+        if (!items.length) {
+          grid.innerHTML = `<div class="item" style="grid-column:1 / -1;">
+            <p style="margin:0; color:rgba(242,246,255,.78)">No listings match your filters. Try clearing some filters.</p>
+          </div>`;
+          return;
+        }
+
+        for (const it of items) {
+          const thumb = (it.images && it.images[0])
+            ? `<img alt="" src="${it.images[0]}" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:16px;" />`
+            : `ELECTRONICS`;
+          const tags = [
+            it.verified ? `<span class="tag good">Verified seller</span>` : `<span class="tag warn">Unverified</span>`,
+            it.warranty ? `<span class="tag good">Warranty</span>` : `<span class="tag">No warranty</span>`,
+            `<span class="tag">${conditionLabel(it.condition)}</span>`,
+            `<span class="tag">${it.city}</span>`,
+          ].join("");
+
+          const card = document.createElement("article");
+          card.className = "item";
+          card.innerHTML = `
+            <div class="thumb" aria-label="Listing image placeholder">${thumb}</div>
+            <div class="meta">
+              <p class="title">${it.title}</p>
+              <div class="price">${fmtKES(it.price)}</div>
+            </div>
+            <div class="sub">Category: ${it.category.replace("_"," ")} • Seller: ${it.sellerName || "Seller"}</div>
+            <div class="tags" aria-label="Listing tags">${tags}</div>
+            <div class="row">
+              <button class="btn small secondary" type="button" data-action="chat" data-id="${it.id}">Chat seller</button>
+              <button class="btn small" type="button" data-action="buy" data-id="${it.id}">Buy / Arrange delivery</button>
+            </div>
+          `;
+          grid.appendChild(card);
+        }
+      }
+
+      function applyFilters() {
+        const q = el("q").value.trim().toLowerCase();
+        const category = el("category").value;
+        const condition = el("condition").value;
+        const maxPrice = Number(el("maxPrice").value || 0);
+        const city = (el("city").value || el("quickCity").value || "").trim();
+
+        let out = listings.slice();
+
+        if (q) out = out.filter(x => x.title.toLowerCase().includes(q));
+        if (category) out = out.filter(x => x.category === category);
+        if (condition) out = out.filter(x => x.condition === condition);
+        if (maxPrice > 0) out = out.filter(x => x.price <= maxPrice);
+        if (city) out = out.filter(x => x.city === city);
+
+        el("resultHint").textContent = `Showing ${out.length} listing(s) — demo data`;
+        render(out);
+      }
+
+      // Basic sort toggle (demo)
+      let sortMode = "match"; // match | price_asc | price_desc
+      function sortAndRender() {
+        const q = el("q").value.trim().toLowerCase();
+        const category = el("category").value;
+        const condition = el("condition").value;
+        const maxPrice = Number(el("maxPrice").value || 0);
+        const city = (el("city").value || el("quickCity").value || "").trim();
+
+        let out = listings.slice();
+        if (q) out = out.filter(x => x.title.toLowerCase().includes(q));
+        if (category) out = out.filter(x => x.category === category);
+        if (condition) out = out.filter(x => x.condition === condition);
+        if (maxPrice > 0) out = out.filter(x => x.price <= maxPrice);
+        if (city) out = out.filter(x => x.city === city);
+
+        if (sortMode === "price_asc") out.sort((a,b) => a.price - b.price);
+        if (sortMode === "price_desc") out.sort((a,b) => b.price - a.price);
+
+        el("resultHint").textContent = `Showing ${out.length} listing(s) — demo data`;
+        render(out);
+      }
+
+      // Wire up UI
+      el("year").textContent = new Date().getFullYear();
+
+      render(listings);
+
+      // --- Auth (client-side demo) ---
+      const USERS_KEY = "jijitek_users_v1";
+      const SESSION_KEY = "jijitek_session_v1";
+      const AI_KEY = "jijitek_ai_assistant_v1";
+
+      function normalizeEmail(s) {
+        return String(s || "").trim().toLowerCase();
+      }
+
+      function readUsers() {
+        try {
+          const raw = localStorage.getItem(USERS_KEY);
+          const parsed = raw ? JSON.parse(raw) : [];
+          return Array.isArray(parsed) ? parsed : [];
+        } catch {
+          return [];
+        }
+      }
+
+      function writeUsers(users) {
+        localStorage.setItem(USERS_KEY, JSON.stringify(users));
+      }
+
+      function getSessionEmail() {
+        return normalizeEmail(localStorage.getItem(SESSION_KEY));
+      }
+
+      function setSessionEmail(email) {
+        localStorage.setItem(SESSION_KEY, normalizeEmail(email));
+      }
+
+      function clearSession() {
+        localStorage.removeItem(SESSION_KEY);
+      }
+
+      function getCurrentUser() {
+        const email = getSessionEmail();
+        if (!email) return null;
+        return readUsers().find(u => normalizeEmail(u.email) === email) || null;
+      }
+
+      function setError(targetId, message) {
+        const box = el(targetId);
+        box.textContent = message || "";
+        box.classList.toggle("show", Boolean(message));
+      }
+
+      function setAuthMode(mode) {
+        const isLogin = mode === "login";
+        el("tabLogin").setAttribute("aria-selected", String(isLogin));
+        el("tabRegister").setAttribute("aria-selected", String(!isLogin));
+        el("loginForm").style.display = isLogin ? "" : "none";
+        el("registerForm").style.display = isLogin ? "none" : "";
+        setError("loginError", "");
+        setError("registerError", "");
+      }
+
+      function updateAuthUI() {
+        const u = getCurrentUser();
+        const chip = el("userChip");
+        const logoutBtn = el("logoutBtn");
+        const loginLink = el("loginLink");
+        const chatLink = el("chatLink");
+        const sellLink = el("sellLink");
+        const fabBar = el("fabBar");
+
+        if (u) {
+          chip.hidden = false;
+          chip.textContent = `Hi, ${u.name || "User"}`;
+          logoutBtn.style.display = "";
+          loginLink.style.display = "none";
+          chatLink.style.display = "";
+          sellLink.style.display = "";
+          fabBar.hidden = false;
+        } else {
+          chip.hidden = true;
+          chip.textContent = "";
+          logoutBtn.style.display = "none";
+          loginLink.style.display = "";
+          chatLink.style.display = "none";
+          sellLink.style.display = "none";
+          fabBar.hidden = true;
+        }
+      }
+
+      function setAppView(view) {
+        const isAuth = view === "auth";
+        const isHome = view === "home";
+        const isSell = view === "sell";
+        const isChat = view === "chat";
+
+        el("login").classList.toggle("hidden", !isAuth);
+
+        el("homeTop").classList.toggle("hidden", !(isHome));
+        el("browse").classList.toggle("hidden", !(isHome));
+        el("support").classList.toggle("hidden", !(isHome));
+        document.querySelector("footer").classList.toggle("hidden", !(isHome));
+
+        el("sell").classList.toggle("hidden", !(isSell));
+        el("chat").classList.toggle("hidden", !(isChat));
+
+        const fabBar = el("fabBar");
+        fabBar.classList.toggle("hidden", isAuth);
+      }
+
+      function goToHome() {
+        setAppView("home");
+        document.querySelector("#homeTop").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      function goToSell() {
+        const u = requireAuth({ reason: "Please login to sell." });
+        if (!u) return;
+        setAppView("sell");
+        renderSellPreview();
+        document.querySelector("#sell").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      function goToChat() {
+        const u = requireAuth({ reason: "Please login to view your chats." });
+        if (!u) return;
+        setAppView("chat");
+        activeChatId = "";
+        renderChatList();
+        renderChatThread("");
+        document.querySelector("#chat").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function requireAuth({ reason = "Please login to continue." } = {}) {
+        const u = getCurrentUser();
+        if (u) return u;
+        showToast(reason);
+        setAuthMode("login");
+        document.querySelector("#login").scrollIntoView({ behavior: "smooth", block: "start" });
+        el("loginEmail").focus({ preventScroll: true });
+        return null;
+      }
+
+      el("tabLogin").addEventListener("click", () => setAuthMode("login"));
+      el("tabRegister").addEventListener("click", () => setAuthMode("register"));
+      el("loginToRegister").addEventListener("click", () => setAuthMode("register"));
+      el("registerToLogin").addEventListener("click", () => setAuthMode("login"));
+
+      el("logoutBtn").addEventListener("click", () => {
+        clearSession();
+        updateAuthUI();
+        setAppView("auth");
+        showToast("Logged out.");
+        document.querySelector("#login").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      el("loginForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        setError("loginError", "");
+
+        const email = normalizeEmail(el("loginEmail").value);
+        const password = String(el("loginPassword").value || "");
+        if (!email || !password) {
+          setError("loginError", "Please enter your email and password.");
+          return;
+        }
+
+        const users = readUsers();
+        const u = users.find(x => normalizeEmail(x.email) === email);
+        if (!u || u.password !== password) {
+          setError("loginError", "Incorrect email or password.");
+          return;
+        }
+
+        setSessionEmail(email);
+        updateAuthUI();
+        setAppView("home");
+        showToast("Login successful.");
+        document.querySelector("#homeTop").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      el("registerForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        setError("registerError", "");
+
+        const name = String(el("regName").value || "").trim();
+        const email = normalizeEmail(el("regEmail").value);
+        const phone = String(el("regPhone").value || "").trim();
+        const password = String(el("regPassword").value || "");
+
+        if (!name || !email || !password) {
+          setError("registerError", "Please fill in name, email, and password.");
+          return;
+        }
+
+        const users = readUsers();
+        if (users.some(x => normalizeEmail(x.email) === email)) {
+          setError("registerError", "That email is already registered. Please login instead.");
+          setAuthMode("login");
+          el("loginEmail").value = email;
+          el("loginPassword").value = "";
+          return;
+        }
+
+        users.push({ name, email, phone, password, createdAt: Date.now() });
+        writeUsers(users);
+        setSessionEmail(email);
+        updateAuthUI();
+        setAppView("home");
+        showToast("Account created. You’re now logged in.");
+        document.querySelector("#homeTop").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      // --- Chat (client-side demo) ---
+      const CHATS_KEY = "jijitek_chats_v1"; // { [chatId]: { chatId, listingId, buyerEmail, sellerEmail, createdAt, updatedAt, messages: [...] } }
+      let activeChatId = "";
+
+      function readChats() {
+        try {
+          const raw = localStorage.getItem(CHATS_KEY);
+          const parsed = raw ? JSON.parse(raw) : {};
+          return parsed && typeof parsed === "object" ? parsed : {};
+        } catch {
+          return {};
+        }
+      }
+      function writeChats(chats) {
+        localStorage.setItem(CHATS_KEY, JSON.stringify(chats));
+      }
+      function getOrCreateChat({ listingId, buyerEmail, sellerEmail }) {
+        const chats = readChats();
+        const chatId = `${Number(listingId)}::${normalizeEmail(buyerEmail)}::${normalizeEmail(sellerEmail)}`;
+        if (!chats[chatId]) {
+          chats[chatId] = {
+            chatId,
+            listingId: Number(listingId),
+            buyerEmail: normalizeEmail(buyerEmail),
+            sellerEmail: normalizeEmail(sellerEmail),
+            createdAt: Date.now(),
+            updatedAt: Date.now(),
+            messages: []
+          };
+          writeChats(chats);
+        }
+        return chats[chatId];
+      }
+      function listMyChats() {
+        const me = getSessionEmail();
+        if (!me) return [];
+        const chats = Object.values(readChats());
+        return chats
+          .filter(c => normalizeEmail(c.buyerEmail) === me || normalizeEmail(c.sellerEmail) === me)
+          .sort((a,b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+      }
+      function otherParty(chat) {
+        const me = getSessionEmail();
+        const isBuyer = normalizeEmail(chat.buyerEmail) === me;
+        return { role: isBuyer ? "Buyer" : "Seller", other: isBuyer ? chat.sellerEmail : chat.buyerEmail };
+      }
+      function getListingById(id) {
+        return listings.find(x => Number(x.id) === Number(id)) || null;
+      }
+      function renderChatList() {
+        const box = el("chatList");
+        box.innerHTML = "";
+        const chats = listMyChats();
+        if (!chats.length) {
+          box.innerHTML = `<div class="listItem"><p class="listTitle" style="margin:0;">No chats yet</p><p class="listMeta" style="margin:6px 0 0;">Start a chat from a listing (“Chat seller”).</p></div>`;
+          return;
+        }
+        for (const c of chats) {
+          const listing = getListingById(c.listingId);
+          const meta = otherParty(c);
+          const last = (c.messages || []).slice(-1)[0];
+          const lastLine = last ? `${last.from === getSessionEmail() ? "You" : "Them"}: ${last.text}` : "No messages yet";
+          const item = document.createElement("div");
+          item.className = "listItem" + (c.chatId === activeChatId ? " active" : "");
+          item.setAttribute("data-chat-id", c.chatId);
+          item.innerHTML = `
+            <div class="listTop">
+              <p class="listTitle">${listing ? listing.title : `Listing #${c.listingId}`}</p>
+              <span class="tag">${fmtTime(c.updatedAt || c.createdAt)}</span>
+            </div>
+            <p class="listMeta" style="margin:6px 0 0;">${meta.role} chat • ${meta.other}</p>
+            <p class="listMeta" style="margin:6px 0 0;">${lastLine}</p>
+          `;
+          box.appendChild(item);
+        }
+      }
+      function renderChatThread(chatId) {
+        const chats = readChats();
+        const c = chats[chatId];
+        activeChatId = chatId || "";
+        setError("chatError", "");
+
+        const title = el("chatTitle");
+        const roleTag = el("chatRoleTag");
+        const input = el("chatInput");
+        const sendBtn = el("chatSendBtn");
+        const bubbles = el("chatBubbles");
+
+        bubbles.innerHTML = "";
+        if (!c) {
+          title.textContent = "No chat selected";
+          roleTag.style.display = "none";
+          input.disabled = true;
+          sendBtn.disabled = true;
+          renderChatList();
+          return;
+        }
+
+        const listing = getListingById(c.listingId);
+        const meta = otherParty(c);
+        title.textContent = listing ? listing.title : `Listing #${c.listingId}`;
+        roleTag.style.display = "";
+        roleTag.textContent = `${meta.role} • With ${meta.other}`;
+
+        input.disabled = false;
+        sendBtn.disabled = false;
+
+        const me = getSessionEmail();
+        for (const m of (c.messages || [])) {
+          const b = document.createElement("div");
+          b.className = "bubble" + (normalizeEmail(m.from) === me ? " me" : "");
+          b.innerHTML = `${m.text}<span class="ts">${fmtTime(m.ts)}</span>`;
+          bubbles.appendChild(b);
+        }
+        bubbles.scrollTop = bubbles.scrollHeight;
+        renderChatList();
+      }
+      function openChatForListing(listingId) {
+        const meUser = requireAuth({ reason: "Please login to chat with sellers." });
+        if (!meUser) return;
+
+        const listing = getListingById(listingId);
+        if (!listing) {
+          showToast("Listing not found.");
+          return;
+        }
+        const me = getSessionEmail();
+        const sellerEmail = normalizeEmail(listing.sellerEmail || "");
+        if (!sellerEmail) {
+          showToast("This demo listing has no seller info.");
+          return;
+        }
+        if (sellerEmail === me) {
+          showToast("You are the seller for this listing (demo).");
+        }
+
+        const chat = getOrCreateChat({ listingId: listing.id, buyerEmail: me, sellerEmail });
+        setAppView("chat");
+        renderChatList();
+        renderChatThread(chat.chatId);
+        document.querySelector("#chat").scrollIntoView({ behavior: "smooth", block: "start" });
+        el("chatInput").focus({ preventScroll: true });
+      }
+      el("chatList").addEventListener("click", (e) => {
+        const li = e.target.closest("[data-chat-id]");
+        if (!li) return;
+        renderChatThread(li.getAttribute("data-chat-id"));
+      });
+      function sendActiveChatMessage() {
+        const meUser = requireAuth({ reason: "Please login to send messages." });
+        if (!meUser) return;
+        if (!activeChatId) return;
+
+        const text = String(el("chatInput").value || "").trim();
+        if (!text) return;
+
+        const chats = readChats();
+        const c = chats[activeChatId];
+        if (!c) return;
+
+        const me = getSessionEmail();
+        c.messages = Array.isArray(c.messages) ? c.messages : [];
+        c.messages.push({ from: me, text, ts: Date.now() });
+        c.updatedAt = Date.now();
+        chats[activeChatId] = c;
+        writeChats(chats);
+
+        el("chatInput").value = "";
+        renderChatThread(activeChatId);
+      }
+      el("chatSendBtn").addEventListener("click", () => sendActiveChatMessage());
+      el("chatInput").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") sendActiveChatMessage();
+      });
+      el("newChatHelpBtn").addEventListener("click", () => {
+        showToast("Open any listing and click “Chat seller” to start a conversation.");
+      });
+
+      // --- Sell / Upload (client-side demo) ---
+      let pendingImages = [];
+      function clearSellForm() {
+        el("sellTitle").value = "";
+        el("sellCategory").value = "";
+        el("sellCondition").value = "";
+        el("sellCity").value = "";
+        el("sellPrice").value = "";
+        el("sellImages").value = "";
+        pendingImages = [];
+        el("sellPreview").innerHTML = "";
+        setError("sellError", "");
+      }
+      function renderSellPreview() {
+        const box = el("sellPreview");
+        box.innerHTML = "";
+        if (!pendingImages.length) {
+          box.innerHTML = `<div class="imgTile" style="grid-column:1 / -1;">No images selected</div>`;
+          return;
+        }
+        for (const src of pendingImages) {
+          const tile = document.createElement("div");
+          tile.className = "imgTile";
+          tile.innerHTML = `<img alt="Uploaded product image" src="${src}" />`;
+          box.appendChild(tile);
+        }
+      }
+      async function filesToDataUrls(files, max = 6) {
+        const arr = Array.from(files || []).slice(0, max);
+        const toDataUrl = (file) => new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result || ""));
+          reader.onerror = () => reject(new Error("Failed to read image"));
+          reader.readAsDataURL(file);
+        });
+        const urls = [];
+        for (const f of arr) urls.push(await toDataUrl(f));
+        return urls;
+      }
+      el("sellImages").addEventListener("change", async (e) => {
+        setError("sellError", "");
+        try {
+          pendingImages = await filesToDataUrls(e.target.files, 6);
+          renderSellPreview();
+        } catch {
+          setError("sellError", "Could not read one of the images. Please try different files.");
+        }
+      });
+      el("sellClearBtn").addEventListener("click", () => clearSellForm());
+      el("sellForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        setError("sellError", "");
+
+        const u = requireAuth({ reason: "Please login to publish a listing." });
+        if (!u) return;
+
+        const title = String(el("sellTitle").value || "").trim();
+        const category = String(el("sellCategory").value || "").trim();
+        const condition = String(el("sellCondition").value || "").trim();
+        const city = String(el("sellCity").value || "").trim();
+        const price = Number(el("sellPrice").value || 0);
+
+        if (!title || !category || !condition || !city || !(price > 0)) {
+          setError("sellError", "Please fill in all required fields (and set a price).");
+          return;
+        }
+
+        const nextId = Math.max(0, ...listings.map(x => Number(x.id) || 0)) + 1;
+        const me = getSessionEmail();
+        const newItem = {
+          id: nextId,
+          title,
+          category,
+          city,
+          price,
+          condition,
+          warranty: false,
+          verified: false,
+          sellerName: u.name || "Seller",
+          sellerEmail: me,
+          images: pendingImages.slice(0, 6),
+          createdAt: Date.now()
+        };
+
+        listings = listings.concat([newItem]);
+        writeListings(listings);
+        sortAndRender();
+        showToast("Listing published (demo).");
+        clearSellForm();
+        setAppView("home");
+        document.querySelector("#browse").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      el("applyBtn").addEventListener("click", () => {
+        sortAndRender();
+        showToast("Filters applied.");
+      });
+
+      el("resetBtn").addEventListener("click", () => {
+        el("q").value = "";
+        el("category").value = "";
+        el("condition").value = "";
+        el("maxPrice").value = "";
+        el("city").value = "";
+        el("quickCity").value = "";
+        sortMode = "match";
+        el("sortBtn").textContent = "Sort: Best match";
+        el("resultHint").textContent = "Showing demo listings (client-side filtering)";
+        render(listings);
+        showToast("Filters reset.");
+      });
+
+      el("q").addEventListener("input", () => sortAndRender());
+      el("quickCity").addEventListener("change", () => sortAndRender());
+      el("category").addEventListener("change", () => sortAndRender());
+      el("condition").addEventListener("change", () => sortAndRender());
+      el("city").addEventListener("change", () => sortAndRender());
+      el("maxPrice").addEventListener("input", () => sortAndRender());
+
+      el("sortBtn").addEventListener("click", () => {
+        sortMode = sortMode === "match" ? "price_asc" : sortMode === "price_asc" ? "price_desc" : "match";
+        el("sortBtn").textContent =
+          sortMode === "match" ? "Sort: Best match" : sortMode === "price_asc" ? "Sort: Price (low → high)" : "Sort: Price (high → low)";
+        sortAndRender();
+      });
+
+      el("browseBtn").addEventListener("click", () => {
+        document.querySelector("#browse").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      el("sellBtn").addEventListener("click", () => {
+        const u = requireAuth({ reason: "Please login to post an ad." });
+        if (!u) return;
+        setAppView("sell");
+        renderSellPreview();
+        document.querySelector("#sell").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      el("verifyBtn").addEventListener("click", () => {
+        showToast("Tip: Verify IMEI/serial, test ports/camera, and meet in safe public places.");
+      });
+
+      el("mpesaBtn").addEventListener("click", () => {
+        showToast("M-PESA tip: Confirm recipient details and avoid ‘release before inspection’ requests.");
+      });
+
+      el("scamBtn").addEventListener("click", () => {
+        showToast("Scam checks: too-cheap price, rushed sale, off-platform payments, fake delivery agents.");
+      });
+
+      el("deliveryBtn").addEventListener("click", () => {
+        showToast("Delivery: Use tracked couriers, record unboxing, and keep chat/receipts.");
+      });
+
+      el("reportBtn").addEventListener("click", () => {
+        showToast("Demo: Reporting needs backend moderation tools.");
+      });
+
+      grid.addEventListener("click", (e) => {
+        const btn = e.target.closest("button[data-action]");
+        if (!btn) return;
+        const id = Number(btn.getAttribute("data-id"));
+        const item = listings.find(x => x.id === id);
+        if (!item) return;
+
+        if (btn.getAttribute("data-action") === "chat") {
+          openChatForListing(item.id);
+        } else {
+          showToast(`Demo: Arrange pickup/delivery for "${item.title}" (${fmtKES(item.price)}).`);
+        }
+      });
+
+      // Initialize auth UI
+      setAuthMode("login");
+      updateAuthUI();
+      setAppView(getCurrentUser() ? "home" : "auth");
+      if (!getCurrentUser()) document.querySelector("#login").scrollIntoView({ behavior: "auto", block: "start" });
+
+      // Nav helpers for SPA sections that require auth
+      el("chatLink").addEventListener("click", (e) => {
+        e.preventDefault();
+        goToChat();
+      });
+      el("sellLink").addEventListener("click", (e) => {
+        e.preventDefault();
+        goToSell();
+      });
+
+      el("fabChatBtn").addEventListener("click", () => {
+        goToChat();
+      });
+
+      el("fabSellBtn").addEventListener("click", () => {
+        goToSell();
+      });
+
+      // --- Assistant (rule-based help) ---
+      function readAiState() {
+        try {
+          const raw = localStorage.getItem(AI_KEY);
+          const parsed = raw ? JSON.parse(raw) : { messages: [] };
+          if (!parsed || typeof parsed !== "object") return { messages: [] };
+          if (!Array.isArray(parsed.messages)) parsed.messages = [];
+          return parsed;
+        } catch {
+          return { messages: [] };
+        }
+      }
+      function writeAiState(state) {
+        localStorage.setItem(AI_KEY, JSON.stringify(state));
+      }
+      function pushAiMessage({ role, text }) {
+        const state = readAiState();
+        state.messages.push({ role, text, ts: Date.now() });
+        state.messages = state.messages.slice(-40);
+        writeAiState(state);
+        renderAiMessages();
+      }
+      function renderAiMessages() {
+        const box = el("aiMsgs");
+        const state = readAiState();
+        box.innerHTML = "";
+        if (!state.messages.length) {
+          const intro = document.createElement("div");
+          intro.className = "aiMsg";
+          intro.innerHTML = `Tell me what you’re trying to do (login, filters, upload images, chat). I’ll guide you step-by-step.`;
+          box.appendChild(intro);
+        } else {
+          for (const m of state.messages) {
+            const d = document.createElement("div");
+            d.className = "aiMsg" + (m.role === "me" ? " me" : "");
+            d.textContent = m.text;
+            box.appendChild(d);
+          }
+        }
+        box.scrollTop = box.scrollHeight;
+      }
+      function openAssistant() {
+        el("aiPanel").classList.add("show");
+        renderAiMessages();
+        el("aiInput").focus({ preventScroll: true });
+      }
+      function closeAssistant() {
+        el("aiPanel").classList.remove("show");
+      }
+      function clearAssistant() {
+        localStorage.removeItem(AI_KEY);
+        renderAiMessages();
+      }
+
+      function assistantReply(userText) {
+        const t = String(userText || "").trim();
+        const q = t.toLowerCase();
+        const loggedIn = Boolean(getCurrentUser());
+
+        const say = (msg) => pushAiMessage({ role: "ai", text: msg });
+
+        if (!t) {
+          say("Ask me something like: “How do I upload images?” or “How do I start a chat?”");
+          return;
+        }
+
+        // Navigation intents
+        if (q.includes("go to") || q.includes("open") || q.includes("take me")) {
+          if (q.includes("chat")) { goToChat(); say("Opened Chats. Pick a conversation in Inbox, or start one from a listing using “Chat seller”."); return; }
+          if (q.includes("sell") || q.includes("upload") || q.includes("post")) { goToSell(); say("Opened Sell/Upload. Add details, choose images, then publish."); return; }
+          if (q.includes("home") || q.includes("homepage")) { goToHome(); say("Opened the homepage."); return; }
+        }
+
+        // How-to: login / signup
+        if (q.includes("login") || q.includes("log in") || q.includes("sign in") || q.includes("sign up") || q.includes("register") || q.includes("create account")) {
+          if (loggedIn) {
+            say("You’re already logged in. Use “Sell” to post an ad or “Chats” to message sellers/buyers. If you need a different account, press Logout first.");
+          } else {
+            say("To login: open the Login page, enter your email + password, then click Login. New user? switch to “Create account”, fill details, then submit — you’ll be logged in automatically.");
+          }
+          return;
+        }
+
+        // How-to: filters / search
+        if (q.includes("filter") || q.includes("search") || q.includes("find") || q.includes("sort") || q.includes("price") || q.includes("location") || q.includes("city")) {
+          say("To filter listings: use the Quick filters panel (Category, Condition, Max price, Location) then click Apply. You can also type in the search box at the top and use Sort to change price order.");
+          return;
+        }
+
+        // How-to: post ad / upload images
+        if (q.includes("post") || q.includes("upload") || q.includes("image") || q.includes("photo") || q.includes("sell") || q.includes("listing") || q.includes("ad")) {
+          if (!loggedIn) {
+            say("To post an ad, you must login first. After login, click the Upload icon on the left or the Sell icon on the right side.");
+            return;
+          }
+          say("To post an ad: open Sell → fill title/category/condition/city/price → click Upload images and select photos → review previews → click Publish listing. Your listing will appear in Featured electronics (demo).");
+          return;
+        }
+
+        // How-to: chats
+        if (q.includes("chat") || q.includes("message") || q.includes("inbox") || q.includes("talk") || q.includes("seller") || q.includes("buyer")) {
+          if (!loggedIn) {
+            say("To chat, login first. Then go to Browse and click “Chat seller” on any listing to start a conversation.");
+            return;
+          }
+          say("To start a chat: go to Browse → click “Chat seller” on a listing. It opens Chats and creates a conversation. Use the Inbox to switch chats and type your message in the box then Send.");
+          return;
+        }
+
+        // Safety / scams
+        if (q.includes("scam") || q.includes("safe") || q.includes("mpesa") || q.includes("m-pesa") || q.includes("delivery") || q.includes("verify")) {
+          say("Safety tips: meet in public, test the device (IMEI/serial, ports/camera), avoid suspicious advance payments, and use tracked couriers for delivery. Use M-PESA carefully—confirm recipient details.");
+          return;
+        }
+
+        // Default fallback
+        say("I can help with login, filters, uploading images, posting ads, and chats. Tell me what you’re trying to do and what part is confusing.");
+      }
+
+      el("aiBtn").addEventListener("click", () => {
+        const isOpen = el("aiPanel").classList.contains("show");
+        if (isOpen) closeAssistant(); else openAssistant();
+      });
+      el("aiCloseBtn").addEventListener("click", () => closeAssistant());
+      el("aiClearBtn").addEventListener("click", () => clearAssistant());
+      el("aiSendBtn").addEventListener("click", () => {
+        const text = String(el("aiInput").value || "").trim();
+        if (!text) return;
+        el("aiInput").value = "";
+        pushAiMessage({ role: "me", text });
+        assistantReply(text);
+      });
+      el("aiInput").addEventListener("keydown", (e) => {
+        if (e.key !== "Enter") return;
+        const text = String(el("aiInput").value || "").trim();
+        if (!text) return;
+        el("aiInput").value = "";
+        pushAiMessage({ role: "me", text });
+        assistantReply(text);
+      });
+      el("aiQLogin").addEventListener("click", () => assistantReply("How do I login?"));
+      el("aiQSell").addEventListener("click", () => assistantReply("How do I post an ad and upload images?"));
+      el("aiQChat").addEventListener("click", () => assistantReply("How do I start a chat with a seller?"));
+      el("aiQFilter").addEventListener("click", () => assistantReply("How do I filter listings?"));
+
+      // Restore assistant history if any
+      renderAiMessages();
+    </script>
+  </body>
+</html>
